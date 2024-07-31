@@ -1,17 +1,17 @@
 # Этап 1: Сборка приложения на C
-FROM gcc:latest AS build_c
+FROM gcc:10 AS build_c
 WORKDIR /app
 COPY hello.c .
 RUN gcc -o hello_c hello.c
 
 # Этап 2: Сборка приложения на Go
-FROM golang:latest AS build_go
+FROM golang:1.20 AS build_go
 WORKDIR /app
 COPY hello.go .
 RUN go build -o hello_go hello.go
 
 # Этап 3: Финальный этап
-FROM ubuntu:latest
+FROM ubuntu:22.04
 WORKDIR /app
 COPY --from=build_c /app/hello_c .
 COPY --from=build_go /app/hello_go .

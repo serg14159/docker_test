@@ -18,5 +18,5 @@
     ```
 5. Запустите приложение на Go:
     ```
-    docker run --rm hello_world /app/hello_go
+    docker run --rm --entrypoint /app/hello_go hello_world
     ```
