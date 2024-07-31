@@ -1,6 +1,6 @@
-# Docker Веб-Приложение
+# Пример многоэтапной сборки
 
-## Как запустить
+## Как собрать и запустить
 
 1. Убедитесь, что Docker установлен.
 2. Клонируйте репозиторий:
@@ -8,9 +8,15 @@
     git clone <repository_url>
     cd <repository_directory>
     ```
-3. Сделайте скрипт исполняемым и запустите его:
+3. Соберите Docker-образ:
     ```
-    chmod +x run.sh
-    ./run.sh
+    docker build -t hello_world .
     ```
-4. Доступ к веб-приложению по адресу `http://localhost:8080`.
+4. Запустите приложение на C по умолчанию:
+    ```
+    docker run --rm hello_world
+    ```
+5. Запустите приложение на Go:
+    ```
+    docker run --rm hello_world /app/hello_go
+    ```
